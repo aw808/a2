@@ -1,12 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Page</title>
-</head>
-<body>
-    <h1>Github page</h1>
-    <p>Github page.</p>
-</body>
-</html>
+<!-- saved from url=(0056)https://vis-society.github.io/assignments/A2_report.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Vis &amp; Society Assignment 2</title>
+	<link rel="stylesheet" href="./Vis &amp; Society Assignment 2_files/report.css">
+<script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script></head>
+
+<body class="vsc-initialized">
+	<header>
+		<h1>
+			<small>Assignment 2</small>
+			Exploratory Data Analysis
+		</h1>
+
+		<p>
+			<strong>Audrey Wei</strong> — <em>weia@mit.edu</em>
+		</p>
+	</header>
+	<main>
+		<section>
+			<h2>Subtheme: Speculation</h2>
+
+			<h3>Overall Analysis Questions</h3>
+			<ol>
+				<li>What factors or features have contributed to the high property prices in Greater Boston?</li>
+				<li>How does geography affect pricing, type, and flipping of properties?</li>
+				<li>How have different investors contributed to the property flipping in Boston?</li>
+			</ol>
+		</section>
+			<h2>Exploration &amp; Motivation</h2>
+			<p>
+				After my reading on the Affordable Homes Act, I realized that speculation and flipping of properties is a large issue that greatly affects the residents of the Boston area, so I chose it for my sub theme for this assignment. What stood out to me in that reading was the “support for the conversion of vacant commercial space to housing”, as in my analysis showed in this report, there was a large amount of commercial space that seemed to be used for investment, so people could benefit for these buildings to be opened to be used for housing.
+
+I think the factors or features that have contributed to the high property prices in Greater Boston would be very interesting to me, as it seems unintuitive that such an area with lots of jobs and colleges would struggle with housing. As said in the reading under “Theme: Housing Affordability”, the fact that 51% of Boston residents spend more than half on housing was very striking to me that something is wrong with our housing market. Identifying the root causes and potential variables for this issue would be a good first step in alleviating this problem.
+
+For my second analysis question, how does geography affect pricing, type, and flipping of properties, I was mainly influenced by my lived experience as a long-time Boston area resident. I grew up in a suburb in the Boston area, and now go to college here, so I have witnessed the surge in housing prices. Even modest and smaller homes in my area are very expensive and unaffordable, but when my neighbors sell their houses they sell quickly anyway, reinforcing the assumption of high demand for housing in the Boston area, even at the cost of expensive prices. I would be curious as to how this phenomenon differs across different cities in Boston.
+
+For my last general analysis question, how have different investors contributed to the property flipping in Boston, I aim to characterize those contributing to the lack of housing affordability and excess of housing speculation in Boston. I think understanding the mindset of these investors is crucial in comprehending solutions to Boston’s housing crisis.
+
+			</p>
+		<section>
+
+		</section>
+			<h2>Data Overview &amp; Quality</h2>
+			<p>
+				Before we go into visualization, I give a brief overview of the data and some preliminary observations. The data I used was Residential sales data in the City of Boston, 2000-2023, which gave a wide variety of different information including location, buyer and seller information, information on the type of property, and more. I was struck by the high prices and flipping profit when skimming the sheet. Overall, the data quality was quite good and comprehensive, and most values seem reasonable, with not a significant amount missing. However, there was some data structuring that could have made better (i.e. binary numbers when categorical could have sufficed) that could have made the data easier to visualize.
+
+			</p>
+		<section>
+
+		</section>
+			<h2>Data Transformation &amp; Design Chocies</h2>
+			<p>
+				We state our data transformations here for ease of readability for our captions. We assume the data to be missing almost completely at random, so we use methods of mean imputation and selective removal to maintain key trends without introducing bias to the data. We try to avoid removal of data points completely so as to not erase potential trends or introduce bias. We also use some linear regression to infer missing values for variables such as lot size and pricing. We also selectively scaled the y-axis to make the visualization clearer. We also grouped flip_ind (binary flipping or not) to be aggregated into flip_count, so that we can see the number of properties flipped. We also used price_dif_pch (percent change in price), as it acts as a more accurate representation of profit from flipping. Also, instead of having 4 separate columns buyer_bnk_ind, buyer_bus_ind, buyer_gov_ind, buyer_gse_ind, buyer_llc_ind to each have a binary 0 or 1 based on what kind of buyer, I transformed/grouped these 4 columns into “buyer” with categorical variables  of bnk, bus, gov, gse, llc. Also, for the last figure (figure 10), I used a log scale for the color gradient to be able to pick up on the more sensitive trends in our data, which worked well to conserve key relationships.
+			</p>
+		<section>
+		</section>
+		<section>
+			<h2>Discoveries &amp; Insights</h2>
+
+			<figure>
+				<img src="./im/viz1.png" alt="">
+				<figcaption>
+					Figure 1 is "Price Distribution by Building Style Horizontal Bar Chart." We study price distribution by building style to get an idea of the different prices of each building style. We observe that residential buildings such as condo/apartment, conventional, and townhouse have the highest average prices. We are now interested in how these prices for each style have changed over time.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz2.png" alt="">
+				<figcaption>
+					Figure 2 is "Price Distribution by Building Style Over Time (Categorical Style Focused Variation)."While this graph gives us a clear view of the categorical breakdown of styles within each time period (relatively even, with lots of condos and raised capes) and the average price at each date, the bars prevent clear recognition of the trend over time. So, for our next graph, we look at the price distribution over time using a line graph instead of a bar graph. This variation of this same data tells us the story of price increases and decreases over time.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz3.png" alt="">
+				<figcaption>
+				Figure 3 is "Price Distribution by Building Style (Price Trend Focused Variation)." With this graph using area graph instead of bar, we get a clearer picture of what exactly is going on with the prices. We see a sudden spike in conventional housing in around 2014, which could be attributed also to the increase in average priced housing during that time period. This implies that different property types may have different prices, so we are inspired to explore this relationship in the following visualization.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz4.png" alt="">
+				<figcaption>
+				Figure 4 is "Price of Each Property by Type Bubble Graph." This visualization looks very cool and gives us a clear picture of the different prices of each house over different property types. We can clearly see how many of each house are each type, and the size of the bubbles clearly tells us their prices. We make some key observations, such as the lower prices of apartments in comparison with the condos, as well as the lack of R1F (single family residence) in the graph.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz5.png" alt="">
+				<figcaption>
+				Figure 5 is "Last Sale Price of Buildings." This visualization takes the most populated area of the Boston area and graphs the last sale price to get an idea of the current housing market. We see that a bit Southwest of the North End are building with the highest pricing, which aligns with expectations of that region. We are curious as to what kind of buildings these are.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz6.png" alt="">
+				<figcaption>
+				Figure 6 is "Last Sale Price of Buildings By Type." We augment our last graph to explore the relationship between geography, price, as well as building type. Going back to our earlier observation of the high priced buildings near North End, we observe that its primary commercial buildings, which makes sense, as they tend to be larger and more high-end. We observe that in other parts of the Boston area, the building types are more diverse. So, for many commercial buildings the price seems to be significantly higher than other building types and areas. If given more data, or extracted from google maps, I would be curious as to what kind of commercial buildings are located in the area, or if there are nearby businesses, restaurants, or attractions that could be attributed to these high prices. This could be something to explore in future analysis. We are especially interested in house flipping as a potential motivator for rising prices, so for our next graph, we try to see what kinds of buildings (and their location) are being flipped.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz7.png" alt="">
+				<figcaption>
+				Figure 7 is "Flip Horizon by Property Type." We observe that it is mainly residential buildings (in pink) that are being flipped, and the flip horizons are highest (time elapsed between buying and selling) over on the east side, however, this is the case for a fewer number of properties. This implies that a smaller percent of building owners are waiting before selling. However, note that this is the same area with the high last sale prices of buildings, implying there could be a positive correlation between a high flip horizon and a high sale price, at least in that particular region. Since there are also fewer buildings in that high-priced region,  this could drive the higher prices. Going back to our research on housing speculation and affordability, this could mean that investors are holding onto properties and competing for desirable ones in hopes of their buildings rising in value over a larger flip horizon, contributing to the lack of availability of housing and high prices. Now, we move on to our third overarching analysis question on the characterization of investors.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz8.png" alt="">
+				<figcaption>
+				Figure 8 is "Investor Types, Property Type, and Flip Counts." To get the big picture of the investors driving the housing market and building flips, we look for the highest amount of investor-property combination that results in the greatest flips. Based on the visualization, we see that it is primarily non-investors, which aligns with our expectation that most residents in Boston are not actually investors. However, we can see that among the small, medium, and large investors, most are flipping residential homes, contributing to the housing crisis.This raises the question of which of these building types are most profitable, based on time and pricing data, which we explore in the next visualization.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz9.png" alt="">
+				<figcaption>
+				Figure 9 is "Price Percent Difference Over Time." Here, we can see that it is mainly institutional investors making the best building flips with the highest price percent difference, i.e. highest profit on their sales. This is a trend that has been true over the course of many years, and the institutional investors have consistently profited significantly from their building flips. Note that due to lack of information on the validity of price difference outliers, we have retained high values, but they should be taken with a grain of salt as it could be an incorrect value. Note also that smaller investors appear to be losing much more money, as their price percent differences are often in the negatives. This begs the question of what kind of investor buyers and sellers are in play in the building market, and the specific relationship between the two.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./im/viz10.png" alt="">
+				<figcaption>
+				Figure 10 is "Investor Buy and Purchase Relationship for Property Flips." Here is a gradient grid to see the building flip frequencies for different investor type sale and purchase combinations. Note that non-investor and non-investor buy and purchases are most common, but this isn’t too interesting of a result as they make up the majority of the population. To see the relationship between the actual investors, we set the color to be a summation of the flips over a log scale to observe a greater range of colors. What's interesting is that large investors tend to buy from large investors, and that medium investors tend to buy most from medium investors. This implies a potential relationship between investor types, as there could potentially be some interpersonal relationships between these investors that are making these building flips.
+				</figcaption>
+			</figure>
+		</section>
+
+		<section>
+			<h2>Summary</h2>
+
+			<p>The analysis presented provides a multi-faceted exploration of the housing market in Greater Boston, shedding light on the key factors and issues driving high property prices, the geographic influences on pricing and property flipping, and the role of various investors in shaping market dynamics (i.e. our overall analysis questions). Through our study of price distributions by building style, trends over time, and property-specific pricing, we observe that residential properties tend to have the highest average prices, with notable spikes in conventional housing around 2014. This implies market volatility and potential economic and policy influences on pricing fluctuations. Our geographical analysis reveals distinct trends in pricing and property flipping across different areas, particularly in high-value zones like the North End, where commercial properties exhibit significantly higher sale prices than residential buildings. The spatial distribution of house flipping indicates that investors are more active in specific regions, and properties with a longer flip horizon tend to command higher prices, hinting at speculative market behavior where investors hold onto properties to maximize future gains. This aligns with the broader issue of housing speculation, as properties are increasingly treated as financial assets. Investor characterization further deepens our understanding of Boston’s housing crisis, revealing that while non-investors dominate transactions, institutional investors consistently achieve the highest price percent differences on their flips, securing the most profitable returns. In contrast, smaller investors frequently experience losses, indicating market inefficiencies and competitive disadvantages that may drive smaller players out of the market. The investor purchase-sale relationships further illustrate a concerning market, where larger investors often buy from one another, suggesting a closed system where the rich become richer at the expense of Boston residents. My insights suggest that Boston’s affordability crisis is fueled by a combination of high demand, limited supply, speculative investment, and an investor hierarchy that continues to profit and drive Boston housing affordability down for the rest of us. Addressing these challenges requires policy interventions, such as extensions to the Affordable Homes Act,  that prevent speculation, incentivize affordable housing development, and promote access to housing across different income levels. Further research, such as for the final project, could go into the specific policies that could mitigate these issues to create a more balanced, sustainable, and healthy housing market in Greater Boston.</p>
+		</section>
+	</main>
+
+
+</body></html>
